@@ -1,0 +1,50 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build with PyInstaller (Windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          pyinstaller --noconfirm --onedir --windowed --name "DomainGenerator" "domain_generator_gui.py"
+          Compress-Archive -Path dist\DomainGenerator\* -DestinationPath DomainGenerator-Windows.zip
+
+      - name: Build with PyInstaller (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          pyinstaller --noconfirm --onedir --windowed --name "DomainGenerator" "domain_generator_gui.py"
+          cd dist
+          zip -r ../DomainGenerator-macOS.zip DomainGenerator.app
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            DomainGenerator-Windows.zip
+            DomainGenerator-macOS.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
