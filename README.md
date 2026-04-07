@@ -7,6 +7,13 @@
 
 **DomainGenerator V2** is a powerful, open-source domain name generation tool with a modern GUI. It helps you discover creative and available domain names using various generation modes.
 
+### Screenshots
+<p align="center">
+  <img src="assets/screenshot_mode.png" width="30%" alt="Generation Mode">
+  <img src="assets/screenshot_tld.png" width="30%" alt="TLD Selection">
+  <img src="assets/screenshot_output.png" width="30%" alt="Output & Execute">
+</p>
+
 ### Features
 - **Multiple Generation Modes**:
   - **Brute Force**: Generate domains by iterating through characters (e.g., a-z, 0-9).
@@ -52,6 +59,13 @@ X (Twitter): [@chainepic](https://twitter.com/chainepic)
 ## 中文
 
 **DomainGenerator V2** 是一款功能强大的开源域名生成工具，拥有现代化的图形界面。它可以帮助您通过多种生成模式发现有创意的域名。
+
+### 软件截图
+<p align="center">
+  <img src="assets/screenshot_mode.png" width="30%" alt="生成模式">
+  <img src="assets/screenshot_tld.png" width="30%" alt="后缀选择">
+  <img src="assets/screenshot_output.png" width="30%" alt="输出与执行">
+</p>
 
 ### 功能特性
 - **多种生成模式**：
